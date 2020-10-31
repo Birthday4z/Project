@@ -14,7 +14,7 @@
             }
         }
 
-        public function login($username, $password){
+        public function login($username, $password) {
             $loginquery = mysqli_query($this->DBCon, "SELECT Member_ID, Username, F_Name, L_Name, Phone, isAdmin FROM member WHERE Username = '$username' AND Password = '$password'");
             return $loginquery;
         }
@@ -23,6 +23,12 @@
             $getroomquery = mysqli_query($this->DBCon, "SELECT Room_ID FROM member_active WHERE Member_ID = $memberid");
             return $getroomquery;
         }
+
+        public function getinvoicelist() {
+            $getinvoicelist = mysqli_query($this->DBCon, "SELECT `Invoice_ID`, `Invoice_Note`, `Invoice_Date`, `Invoice_Room`, `Invoice_Receiver_Name`, `Invoice_Total`, `Invoice_Date_Create` FROM `invoice` ORDER BY Invoice_ID DESC");
+            return $getinvoicelist;
+        }
+
 
         public function submit_cleanform($q1, $q2, $q3, $q4, $q5) {
             $cleanformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (1,$q1,$q2,'$q3','$q4','$q5',0)");
@@ -33,6 +39,7 @@
             $repairformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (2,$w1,$w2,'$w3','$w4','$w5',0)");
             return $repairformquery;
         }
+
     }
     
 ?>
@@ -46,7 +53,7 @@
 </head>
 <body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 

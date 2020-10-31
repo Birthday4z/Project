@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/project/src/css/bootstrap.min.js">
+    <link rel="stylesheet" href="/project/src/css/bootstrap.min.css">
     <script src="/project/src/js/jquery-3.3.1.min.js"></script>
     <script src="/project/src/js/bootstrap.min.js"></script>
 
@@ -26,9 +26,41 @@
 <body>
     
     <div class="container-fluid">
+        <?php
+            if (isset($_GET["add"])) {
+        ?>
+        <form method="POST" id="invoice_form">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td colspan="2" align="center"><h2 style="margin-top:11px">Create Invoice Form</h2></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                    To,<br />
+                                    <b>Receiver (BILL TO)</b> <br />
+                                    <input type="text" name="invoice_receiver_name" id="invoice_receiver_name" class="form-control input-sm" placeholder="Enter Receiver Name">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                    Reverse Charge
+                                    </div>
+                                
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+        </form>
+        <?php
+            }
+            else {
+                ?>
         <h3 align="center">Invoice List</h3> <br />
         <div align="right">
-        
+            <a href="invoice.php?add=1" class="btn btn-info btn-xs">Create Invoice</a>
         </div>
 
         <table id="data-table" class="table table-bordered table-striped">
@@ -46,7 +78,7 @@
             </thead>
 
             <?php
-                if($row_invoicelist > 0) {
+                if ($row_invoicelist > 0) {
                     foreach ($sqlresult_invoicelist as $row) {
                         echo '
                             <tr>
@@ -79,12 +111,14 @@
                         
                         ';
                     }
-                }
-            ?>
+                } ?>
 
     
     
     </table>
+    <?php
+            }
+    ?>
     </div>
 </body>
 </html>

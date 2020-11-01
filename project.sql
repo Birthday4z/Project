@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2020 at 11:53 PM
+-- Generation Time: Nov 01, 2020 at 10:15 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -176,28 +176,6 @@ CREATE TABLE `petition_transaction` (
   `isFinished` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `petition_transaction`
---
-
-INSERT INTO `petition_transaction` (`Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES
-(1, 1, 101, 2, '10/11/2020', '', 'test', 0),
-(2, 1, 101, 2, '10/11/2020', '', 'test', 0),
-(3, 1, 101, 2, '10/11/2020', '', 'test', 0),
-(4, 1, 101, 2, '10/11/2020', '2020-10-23', 'ทดสอบ', 0),
-(5, 1, 101, 2, '10/11/2020', '2020-10-08', 'test123456', 0),
-(6, 1, 101, 2, '2020-10-11', '2020-10-16', 'test', 0),
-(7, 1, 101, 2, '2020-10-11', '2020-10-16', 'test', 0),
-(8, 1, 101, 2, '2020-10-11', '', 'sss', 0),
-(9, 1, 101, 2, '2020-10-11', '', 'sss', 0),
-(10, 1, 101, 2, '2020-10-11', '', '', 0),
-(11, 1, 101, 2, '2020-10-11', '', '', 0),
-(12, 1, 101, 2, '2020-10-11', '', '', 0),
-(13, 1, 101, 2, '2020-10-11', '', '', 0),
-(14, 1, 101, 2, '2020-10-11', '', '', 0),
-(15, 1, 101, 2, '2020-10-11', '', '', 0),
-(16, 2, 101, 2, '2020-10-12', '2020-10-23', '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -312,7 +290,7 @@ ALTER TABLE `petition`
 -- AUTO_INCREMENT for table `petition_transaction`
 --
 ALTER TABLE `petition_transaction`
-  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `room`

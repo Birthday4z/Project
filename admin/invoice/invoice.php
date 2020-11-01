@@ -24,7 +24,18 @@
     <title>Invoice</title>
 </head>
 <body>
-    
+
+    <link rel="stylesheet" href="/project/src/css/datepicker.css">
+    <script src="/project/src/js/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#invoice_date').datepicker({
+                format: "yyyy/mm/dd",
+                autoclose: true
+            })
+        });
+    </script>
+
     <div class="container-fluid">
         <?php
             if (isset($_GET["add"])) {
@@ -45,7 +56,10 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                    Reverse Charge
+                                    Reverse Charge <br />>
+
+                                    <input type="text" name="invoice_date" id="invoice_date" class="form-control input-sm" readonly placeholder="Select Invoice Date">
+
                                     </div>
                                 
                                 </div>

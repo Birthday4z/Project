@@ -30,7 +30,7 @@
     <script>
         $(document).ready(function() {
             $('#invoice_date').datepicker({
-                format: "yyyy/mm/dd",
+                format: "yyyy-mm-dd",
                 immediateUpdates: true,
                 todayBtn: true,
                 todayHighlight: true,

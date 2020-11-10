@@ -39,7 +39,7 @@
     <div class="container-fluid">
         <?php
             if (isset($_GET["add"])) {
-        ?>
+                ?>
         <form method="POST" id="invoice_form">
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -63,14 +63,99 @@
                                     </div>
                                 
                                 </div>
+
+                                <table id="invoice-item-table" class="table table-bordered">
+                                    <tr>
+                                        <th>ITEM_NO.</th>
+                                        <th>รายการ</th>
+                                        <th>ราคาต่อหน่วย</th>
+                                        <th>จำนวนหน่วยเดือนก่อน</th>
+                                        <th>จำนวนหน่วยเดือนนี้</th>
+                                        <th>จำนวนหน่วยที่ใช้</th>
+                                        <th colspan="6">Amount (Baht)</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><span id="item_no">1</span></td>
+                                        <td><input type="text" name="item_name[]" id="item_name1" class="form-control input-sm"></td>
+                                        <td><input type="text" name="item_price_unit[]" id="item_price_unit1" data-itemno="1" class="form-control input-sm number_only item_price_unit"></td>
+                                        <td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth1" data-itemno="1" class="form-control input-sm number_only item_unit_lastmonth" readonly></td>
+                                        <td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth1" data-itemno="1" class="form-control input-sm number_only item_unit_thismonth"></td>
+                                        <td><input type="text" name="item_unit_used[]" id="item_unit_used1" data-itemno="1" class="form-control input-sm number_only item_unit_used" readonly></td>
+                                        <td><input type="text" name="item_amount[]" id="item_amount1" data-itemno="1" class="form-control input-sm number_only item_amount" readonly></td>
+                                    </tr>
+                                </table>
+
+                                <div align="right">
+                                    <button type="button" name="add_row" id="add_row" class="btn btn-success btn-xs">เพิ่มแถว</button>
+                                </div>
+
                             </td>
                         </tr>
+
+                        <tr>
+                            <td align="right"><b>Total</b></td>
+                            <td align="right"><b><span id="final_total_amount"></span></b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="hidden" name="total_item" id="total_item" value="1">
+                                <input type="submit" name="create_invoice" id="create_invoice" class="btn btn-info" value="Create">
+                            </td>
+                        </tr>
+
+
                     </table>
                 </div>
         </form>
+
+        <script>
+            $(document).ready(function() {
+                var final_total_amount = $('#final_total_amount').text();
+                var count = 1;
+                $(document).on('click', '#add_row', function(){
+                    count = count + 1;
+                    $('#total_item').val(count);
+                    var html_code = '';
+
+                    html_code += '<tr id="row_id_'+count+'">';
+                    html_code += '<td><span id="item_no">'+count+'</span></td>';
+
+                    html_code += '<td><input type="text" name="item_name[]" id="item_name'+count+'" class="form-control input-sm"></td>';
+
+                    html_code += '<td><input type="text" name="item_price_unit[]" id="item_price_unit'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_price_unit"></td>';
+                    html_code += '<td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_lastmonth" readonly></td>';
+                    html_code += '<td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_thismonth"></td>';
+                    html_code += '<td><input type="text" name="item_unit_used[]" id="item_unit_used'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_used" readonly></td>';
+                    html_code += '<td><input type="text" name="item_amount[]" id="item_amount'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_amount" readonly></td>';
+
+                    html_code += '<td><button type="button" name="remove_row" id="'+count+'"class="btn btn-danger btn-xs remove_row">X</button></td></tr>';
+                    
+                    $('#invoice-item-table').append(html_code);
+
+                
+                });
+                $(document).on('click', '.remove_row', function(){
+                    var row_id = $(this).attr("id");
+                    var total_item_amount = $('#item_amount'+row_id).val();
+                    var final_amount = $('#final_total_amount').text();
+                    var result_amount = parseFloat(final_amount) - parseFloat(total_item_amount);
+                    $('#final_total_amount').text(result_amount);
+                    $('#row_id_'+row_id).remove();
+                    count = count - 1;
+                    $('#total_item').val(count);
+                });
+
+
+
+            });
+        </script>
+
         <?php
-            }
-            else {
+            } else {
                 ?>
         <h3 align="center">Invoice List</h3> <br />
         <div align="right">

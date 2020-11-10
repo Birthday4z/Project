@@ -21,12 +21,10 @@
             if ($_SESSION['isAdmin'] == 1) {
                 //echo "<script>alert('Admin Login Successful!');</script>";
                 echo "<script>window.location.href='admin/admin.php';</script>";
-            }
-            else if ($_SESSION['isAdmin'] == 0) {
+            } elseif ($_SESSION['isAdmin'] == 0) {
                 echo "<script>window.location.href='user/user.php'</script>";
             }
-        }
-        else {
+        } else {
             echo "<script>sweet_error_autoclose('เกิดข้อผิดพลาด', 'Username หรือ Password ไม่ถูกต้อง', 2000)</script>";
             //echo '<meta http-equiv="refresh" content="2;url=index.php" />';
             //echo "<script>alert('Login Error!');</script>";
@@ -44,18 +42,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 
-
-    <!-- Import Script CSS_Bootstrap-->
     <link rel="stylesheet" href="/project/src/css/bootstrap.min.css">
+    <script src="/project/src/js/jquery-3.3.1.min.js"></script>
+    <script src="/project/src/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-
-
-
-
-
-
 </head>
 
 <body>
@@ -97,20 +89,6 @@
         </form>
     </div>
 
-
-
-
-
-    <!-- Import Script JS_Bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

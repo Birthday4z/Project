@@ -4,9 +4,6 @@
 
     $sqlresult_invoicelist = $DBCon->getinvoicelist();
     $row_invoicelist = mysqli_num_rows($sqlresult_invoicelist);
-
-
-
 ?>
 
 <!DOCTYPE html>

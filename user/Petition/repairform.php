@@ -17,7 +17,7 @@
         }
 
         if (isset($_POST['print_repairform'])) {
-            $_SESSION['TypePetition'] = "ฟอร์มคำร้องทำความสะอาดห้องพัก";
+            $_SESSION['TypePetition'] = "ฟอร์มคำร้องซ่อมแซมอุปกรณ์ในห้องพัก";
             $_SESSION['Currentdate'] = $current_date;
             $_SESSION['Wantdate'] = $_POST['want_date'];
             $_SESSION['Description'] = $_POST['Description'];

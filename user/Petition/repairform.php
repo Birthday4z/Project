@@ -14,7 +14,17 @@
             if ($sqlresult) {
                 echo "<script>sweet_success('บันทึกข้อมูลสำเร็จ !', 'คำร้องของคุณถูกบันทึกแล้ว');</script>";
             }
-        } ?>
+        }
+
+        if (isset($_POST['print_repairform'])) {
+            $_SESSION['TypePetition'] = "ฟอร์มคำร้องทำความสะอาดห้องพัก";
+            $_SESSION['Currentdate'] = $current_date;
+            $_SESSION['Wantdate'] = $_POST['want_date'];
+            $_SESSION['Description'] = $_POST['Description'];
+            header("location: printpdf.php");
+        }
+
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +85,7 @@
             <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10"></textarea>
             <br><br>
             <center>
-                <button type="button" class="btn btn-outline-primary">
+                <button type="submit" name="print_repairform" class="btn btn-outline-primary">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z" />

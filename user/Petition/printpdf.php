@@ -8,7 +8,7 @@
     $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
     $fontData = $defaultFontConfig['fontdata'];
     date_default_timezone_set("Asia/Bangkok");
-    $date_time = date("Y-m-d h:i:sa");
+    $date_time = date("Y-m-d h:i:sA");
 
     $mpdf = new \Mpdf\Mpdf([
         'fontDir' => array_merge($fontDirs, [

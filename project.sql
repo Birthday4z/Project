@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2020 at 10:15 PM
+-- Generation Time: Nov 14, 2020 at 04:07 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -176,6 +176,14 @@ CREATE TABLE `petition_transaction` (
   `isFinished` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `petition_transaction`
+--
+
+INSERT INTO `petition_transaction` (`Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES
+(1, 1, 102, 3, '2020-11-14', '2020-11-15', 'มีขี้กองใหญ่ อยู่กลางห้อง', 0),
+(2, 2, 102, 3, '2020-11-14', '2020-11-21', 'ชักโครก ระเบิด', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -290,7 +298,7 @@ ALTER TABLE `petition`
 -- AUTO_INCREMENT for table `petition_transaction`
 --
 ALTER TABLE `petition_transaction`
-  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `room`

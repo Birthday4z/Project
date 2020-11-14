@@ -104,12 +104,12 @@
                     <h5>วันที่ต้องการ </h5>&nbsp;
                     <div style="width: 200px">
                         <input type="text" name="want_date" id="want_date" class="form-control form-inline" required
-                            placeholder="Select Date ...">
+                            placeholder="Select Date **ต้องเลือก**">
                     </div>
                 </div>
             </div>
 
-            <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10"></textarea>
+            <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10" placeholder="ช่องกรอกรายละเอียดการทำความสะอาด **ไม่จำเป็นต้องกรอก**"></textarea>
             <br><br>
             <center>
 

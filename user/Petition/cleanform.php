@@ -60,7 +60,8 @@
             immediateUpdates: true,
             todayBtn: true,
             todayHighlight: true,
-            autoclose: true
+            autoclose: true,
+            startDate: new Date()
         })
     });
     </script>

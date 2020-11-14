@@ -7,6 +7,8 @@
 
     $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
     $fontData = $defaultFontConfig['fontdata'];
+    date_default_timezone_set("Asia/Bangkok");
+    $date_time = date("Y-m-d h:i:sa");
 
     $mpdf = new \Mpdf\Mpdf([
         'fontDir' => array_merge($fontDirs, [
@@ -38,8 +40,11 @@
     <p style="margin-left: 80px; line-height: 1.5;"><strong><span style="font-size: 24px;">เบอร์ติดต่อ : '.$_SESSION['Phone'].'</span></strong></p>
     <p style="margin-left: 80px; line-height: 1.5;"><strong><span style="font-size: 24px;">วันที่ยื่นคำร้อง : '.$_SESSION['Currentdate'].'</span></strong></p>
     <p style="margin-left: 80px; line-height: 1.5;"><strong><span style="font-size: 24px;">วันที่ต้องการ : '.$_SESSION['Wantdate'].'</span></strong></p>
-    <p style="margin-left: 80px; line-height: 1.5;"><strong><span style="font-size: 24px;">รายละเอียดเพิ่มเติม : '.$_SESSION['Description'].'</span></strong></p>';
-
+    <p style="margin-left: 80px; line-height: 1.5;"><strong><span style="font-size: 24px;">รายละเอียดเพิ่มเติม : '.$_SESSION['Description'].'</span></strong></p>
+    <br><br><br><br><br><br>
+    <p style="text-align: right; line-height: 0.5;"><strong><span style="font-size: 24px;">หอพัก Deliberant</span></strong></p>
+    <p style="text-align: right;"><strong><span style="font-size: 24px;">'.$date_time.'</span></strong></p>';
+    
 
     $mpdf->WriteHTML($data);
     $mpdf->Output();

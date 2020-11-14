@@ -12,17 +12,26 @@
             //Submit Query Cleanup Form
             $sqlresult = $DBCon->submit_cleanform($_SESSION['Room_ID'], $_SESSION['Member_ID'], $current_date, $_POST['want_date'], $_POST['Description']);
             if ($sqlresult) {
-                echo "<script>sweet_success('บันทึกข้อมูลสำเร็จ !', 'คำร้องของคุณถูกบันทึกแล้ว');</script>";
+                echo '<script type="text/javascript">swal("บันทึกข้อมูลสำเร็จ !", "ระบบกำลังพาคุณไปหน้าพิมพ์แบบฟอร์ม", "success");</script>';
+                $_SESSION['TypePetition'] = "ฟอร์มคำร้องทำความสะอาดห้องพัก";
+                $_SESSION['Currentdate'] = $current_date;
+                $_SESSION['Wantdate'] = $_POST['want_date'];
+                $_SESSION['Description'] = $_POST['Description'];
+                echo "<script>window.open('printpdf.php','_blank');</script>";
+                
+                //echo '<meta http-equiv="refresh" content="2;url=printpdf.php_blank">';
+
+                //echo "<script>sweet_success('บันทึกข้อมูลสำเร็จ !', 'คำร้องของคุณถูกบันทึกแล้ว');</script>";
             }
         } 
 
-        if (isset($_POST['print_cleanupform'])) {
+        /*if (isset($_POST['print_cleanupform'])) {
             $_SESSION['TypePetition'] = "ฟอร์มคำร้องทำความสะอาดห้องพัก";
             $_SESSION['Currentdate'] = $current_date;
             $_SESSION['Wantdate'] = $_POST['want_date'];
             $_SESSION['Description'] = $_POST['Description'];
             header("location: printpdf.php");
-        }
+        }*/
 
         ?>
 <!DOCTYPE html>
@@ -87,17 +96,6 @@
             <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10"></textarea>
             <br><br>
             <center>
-                <button type="submit" name="print_cleanupform" class="btn btn-outline-primary">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-printer-fill" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z" />
-                        <path fill-rule="evenodd"
-                            d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
-                        <path fill-rule="evenodd"
-                            d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
-                    </svg> Print
-                </button>
-
 
                 <button type="submit" name="submit_cleanupform" class="btn btn-success">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-server" fill="currentColor"

@@ -93,7 +93,7 @@
             
             
 
-            <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10"></textarea>
+            <h5>รายละเอียดเพิ่มเติม</h5> <textarea name="Description" class="form-control" rows="10" placeholder="ช่องกรอกรายละเอียดการทำความสะอาด (ไม่จำเป็น)"></textarea>
             <br><br>
             <center>
 

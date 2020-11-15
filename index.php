@@ -8,7 +8,7 @@
         $password = md5($_POST['password']);
 
         $sqlresult = $DBCon->login($username, $password);
-        $num = mysqli_fetch_array($sqlresult); // Create Session
+        $num = mysqli_fetch_array($sqlresult);
 
         if ($num > 0) {
             $_SESSION['Member_ID'] = $num['Member_ID'];

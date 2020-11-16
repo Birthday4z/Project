@@ -70,7 +70,7 @@
             title: $ea1,
             text: $ea2,
             timer: $ea3,
-            type: "error",
+            icon: "error",
             showConfirmButton: false
             });
         }

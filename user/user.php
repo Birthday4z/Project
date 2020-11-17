@@ -5,9 +5,9 @@
     if ($_SESSION['Member_ID'] == "") {
         header("location: ../index.php");
     } else {
-        // Get Room_ID
+
         $sqlresult = $DBCon->getroom($_SESSION['Member_ID']);
-        $num = mysqli_fetch_array($sqlresult); // Create Session
+        $num = mysqli_fetch_array($sqlresult);
         if ($num > 0) {
             $_SESSION['Room_ID'] = $num['Room_ID'];
         }

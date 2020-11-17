@@ -19,16 +19,12 @@
             $_SESSION['isAdmin'] = $num['isAdmin'];
 
             if ($_SESSION['isAdmin'] == 1) {
-                //echo "<script>alert('Admin Login Successful!');</script>";
                 echo "<script>window.location.href='admin/admin.php';</script>";
             } elseif ($_SESSION['isAdmin'] == 0) {
                 echo "<script>window.location.href='user/user.php'</script>";
             }
         } else {
             echo "<script>sweet_error_autoclose('เกิดข้อผิดพลาด', 'Username หรือ Password ไม่ถูกต้อง', 2000)</script>";
-            //echo '<meta http-equiv="refresh" content="2;url=index.php" />';
-            //echo "<script>alert('Login Error!');</script>";
-            //echo "<script>window.location.href='index.php';</script>";
         }
     }
 

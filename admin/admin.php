@@ -15,7 +15,6 @@
         echo "<script>sweet_success('เข้าสู่ระบบสำเร็จ !', 'ยินดีต้อนรับ คุณ "
         . $_SESSION['Firstname']
         . "')</script>";
-        //echo "<script>sweet_success('เข้าสู่ระบบสำเร็จ !', 'ยินดีต้อนรับ คุณ $Admin_Firstname')</script>";
 
 ?>
 

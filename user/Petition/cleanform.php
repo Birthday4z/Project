@@ -9,7 +9,6 @@
         if (isset($_POST['submit_cleanupform'])) {
             $want_date = $_POST['want_date'];
 
-            //Submit Query Cleanup Form
             $sqlresult = $DBCon->submit_cleanform($_SESSION['Room_ID'], $_SESSION['Member_ID'], $current_date, $_POST['want_date'], $_POST['Description']);
             if ($sqlresult) {
                 echo '<script type="text/javascript">swal("บันทึกข้อมูลสำเร็จ !", "ระบบกำลังพาคุณไปหน้าพิมพ์แบบฟอร์ม", "success");</script>';
@@ -18,20 +17,8 @@
                 $_SESSION['Wantdate'] = $_POST['want_date'];
                 $_SESSION['Description'] = $_POST['Description'];
                 echo "<script>window.open('printpdf.php','_blank');</script>";
-                
-                //echo '<meta http-equiv="refresh" content="2;url=printpdf.php_blank">';
-
-                //echo "<script>sweet_success('บันทึกข้อมูลสำเร็จ !', 'คำร้องของคุณถูกบันทึกแล้ว');</script>";
             }
         } 
-
-        /*if (isset($_POST['print_cleanupform'])) {
-            $_SESSION['TypePetition'] = "ฟอร์มคำร้องทำความสะอาดห้องพัก";
-            $_SESSION['Currentdate'] = $current_date;
-            $_SESSION['Wantdate'] = $_POST['want_date'];
-            $_SESSION['Description'] = $_POST['Description'];
-            header("location: printpdf.php");
-        }*/
 
         ?>
 <!DOCTYPE html>

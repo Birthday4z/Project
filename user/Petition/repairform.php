@@ -9,7 +9,6 @@
         if (isset($_POST['submit_repairform'])) {
             $want_date = $_POST['want_date'];
 
-            //Submit Query Repair Form
             $sqlresult = $DBCon->submit_repairform($_SESSION['Room_ID'], $_SESSION['Member_ID'], $current_date, $_POST['want_date'], $_POST['Description']);
             if ($sqlresult) {
                 echo '<script type="text/javascript">swal("บันทึกข้อมูลสำเร็จ !", "ระบบกำลังพาคุณไปหน้าพิมพ์แบบฟอร์ม", "success");</script>';
@@ -20,34 +19,8 @@
                 
                 echo "<script>window.open('printpdf.php','_blank');</script>";
 
-                //echo '<meta http-equiv="refresh" content="2;url=printpdf.php">';
-
-                
-                //echo "<script>sweet_success('บันทึกข้อมูลสำเร็จ !', 'คำร้องของคุณถูกบันทึกแล้ว');</script>";
-                
-                /*echo '<script type="text/javascript">
-                swal({
-                    title: "บันทึกข้อมูลสำเร็จ !",
-                    text: "คุณต้องการ Print แบบฟอร์มหรือไม่?",
-                    icon: "success",
-                    buttons: true,
-                  })
-                  .then((Printss) => {
-                    if (Printss) {
-                        
-                    } 
-                  });
-                </script>';*/
             }
         }
-
-        /*if ($print == true) {
-            $_SESSION['TypePetition'] = "ฟอร์มคำร้องซ่อมแซมอุปกรณ์ในห้องพัก";
-            $_SESSION['Currentdate'] = $current_date;
-            $_SESSION['Wantdate'] = $_POST['want_date'];
-            $_SESSION['Description'] = $_POST['Description'];
-            header("location: printpdf.php");
-        }*/
 
         ?>
 <!DOCTYPE html>

@@ -75,30 +75,6 @@
             });
         }
     
-    /*function sweet_logout() {
-        swal({
-            title: "ต้องการออกจากระบบ ?",
-            text: "หากต้องการออกจากระบบ กรุณากดปุ่ม OK!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-                swal("ออกจากระบบแล้ว ! ระบบจะพาคุณไปหน้าแรก", {
-                icon: "success",
-                });
-                /*
-                session_start();
-                session_destroy();
-                header("location: index.php");
-                
-            } else {
-                swal("ยกเลิกการออกจากระบบ !");
-            }
-            });
-    }*/
-
 </script>
 </body>
 </html>

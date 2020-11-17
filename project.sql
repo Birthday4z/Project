@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 08:14 AM
+-- Generation Time: Nov 17, 2020 at 10:38 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -93,7 +93,10 @@ CREATE TABLE `lease` (
 --
 
 INSERT INTO `lease` (`Lease_ID`, `Member_ID`, `Room_ID`, `Month_Create`, `Month_End`) VALUES
-(1, 2, 101, '7/2563', '1/2600');
+(1, 2, 101, '7-2020', '1-2600'),
+(2, 3, 102, '11-2020', '1-2600'),
+(3, 5, 104, '11-2020', '1-2600'),
+(4, 4, 103, '11-2020', '1-2600');
 
 -- --------------------------------------------------------
 
@@ -118,7 +121,9 @@ CREATE TABLE `member` (
 INSERT INTO `member` (`Member_ID`, `Username`, `Password`, `F_Name`, `L_Name`, `Phone`, `isAdmin`) VALUES
 (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'วีรภัทร', 'ศรีประดิษฐ์', '0972315630', 1),
 (2, 'test', 'e10adc3949ba59abbe56e057f20f883e', 'ชื่อผู้ใช้', 'นามสกุลผู้ใช้', '01234567890', 0),
-(3, 'dreamza555', 'e10adc3949ba59abbe56e057f20f883e', 'นันนภัส', 'พุทธะทิพากร', '0812345678', 0);
+(3, 'dreamza555', 'e10adc3949ba59abbe56e057f20f883e', 'นันนภัส', 'พุทธะทิพากร', '0812345678', 0),
+(4, 'markzuck555', '6074c6aa3488f3c2dddff2a7ca821aab', 'จิรนันท์', 'สิทธิสมาน', '0851326342', 0),
+(5, 'earthza007', '4a7d1ed414474e4033ac29ccb8653d9b', 'ธนภัทร', 'สีดา', '0926946926', 0);
 
 -- --------------------------------------------------------
 
@@ -138,7 +143,15 @@ CREATE TABLE `member_active` (
 
 INSERT INTO `member_active` (`Room_ID`, `Member_ID`, `Lease_ID`) VALUES
 (101, 2, 1),
-(102, 3, 2);
+(102, 3, 2),
+(103, 4, 2),
+(104, 5, 3),
+(105, 0, 0),
+(106, 0, 0),
+(107, 0, 0),
+(201, 0, 0),
+(202, 0, 0),
+(203, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -191,7 +204,8 @@ INSERT INTO `petition_transaction` (`Petition_Transaction_ID`, `Petition_ID`, `R
 (8, 1, 102, 3, '2020-11-15', '2020-11-22', 'ล้างตู้เย็น', 0),
 (9, 2, 102, 3, '2020-11-15', '2020-11-21', 'ลูกบิดประตูเสีย', 0),
 (10, 1, 102, 3, '2020-11-17', '2020-11-20', 'ทำความสะอาดห้องน้ำ', 0),
-(11, 2, 102, 3, '2020-11-17', '2020-11-21', 'ลูกบิดประตูชำรุด', 0);
+(11, 2, 102, 3, '2020-11-17', '2020-11-21', 'ลูกบิดประตูชำรุด', 0),
+(12, 1, 103, 4, '2020-11-17', '2020-11-19', 'มีขี้หมาอยู่บนเตียง', 0);
 
 -- --------------------------------------------------------
 
@@ -204,6 +218,22 @@ CREATE TABLE `room` (
   `Floor` int(2) NOT NULL,
   `Specification` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`Room_ID`, `Floor`, `Specification`) VALUES
+(101, 1, 'ห้องแอร์'),
+(102, 1, 'ห้องแอร์'),
+(103, 1, 'ห้องพัดลม'),
+(104, 1, 'ห้องพัดลม'),
+(105, 1, 'ห้องพัดลม'),
+(106, 1, 'ห้องแอร์'),
+(107, 1, 'ห้องแอร์'),
+(201, 2, 'ห้องแอร์'),
+(202, 2, 'ห้องแอร์'),
+(203, 2, 'ห้องพัดลม');
 
 --
 -- Indexes for dumped tables
@@ -289,13 +319,13 @@ ALTER TABLE `invoice_item`
 -- AUTO_INCREMENT for table `lease`
 --
 ALTER TABLE `lease`
-  MODIFY `Lease_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Lease_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `Member_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Member_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `petition`
@@ -307,13 +337,13 @@ ALTER TABLE `petition`
 -- AUTO_INCREMENT for table `petition_transaction`
 --
 ALTER TABLE `petition_transaction`
-  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `Room_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Room_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

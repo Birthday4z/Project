@@ -73,7 +73,7 @@
             <div class="form-group row">
             <h5>วันที่ต้องการ </h5>&nbsp;
                 <div style="width: 200px">
-                <input type="text" name="want_date" id="want_date" class="form-control form-inline" required readonly
+                <input type="text" name="want_date" id="want_date" class="form-control form-inline" required
                     placeholder="Select Date **ต้องเลือก**">
                 </div>
             </div>

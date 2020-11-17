@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2020 at 04:07 PM
+-- Generation Time: Nov 17, 2020 at 08:14 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -156,7 +156,7 @@ CREATE TABLE `petition` (
 --
 
 INSERT INTO `petition` (`Petition_ID`, `Description`) VALUES
-(1, 'คำร้องทำความสะอาด'),
+(1, 'คำร้องทำความสะอาดห้องพัก'),
 (2, 'คำร้องซ่อมแซมอุปกรณ์');
 
 -- --------------------------------------------------------
@@ -182,7 +182,16 @@ CREATE TABLE `petition_transaction` (
 
 INSERT INTO `petition_transaction` (`Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES
 (1, 1, 102, 3, '2020-11-14', '2020-11-15', 'มีขี้กองใหญ่ อยู่กลางห้อง', 0),
-(2, 2, 102, 3, '2020-11-14', '2020-11-21', 'ชักโครก ระเบิด', 0);
+(2, 2, 102, 3, '2020-11-14', '2020-11-21', 'ชักโครก ระเบิด', 0),
+(3, 1, 102, 3, '2020-11-14', '2020-11-19', '', 0),
+(4, 1, 102, 3, '2020-11-14', '2020-11-17', 'ทำความสะอาดระเบียง', 0),
+(5, 2, 102, 3, '2020-11-14', '2020-11-14', 'ทดสอบ', 0),
+(6, 1, 102, 3, '2020-11-14', '2020-11-24', 'ทดสอบ', 0),
+(7, 1, 102, 3, '2020-11-14', '2020-11-17', 'ห้องน้ำเปียก', 0),
+(8, 1, 102, 3, '2020-11-15', '2020-11-22', 'ล้างตู้เย็น', 0),
+(9, 2, 102, 3, '2020-11-15', '2020-11-21', 'ลูกบิดประตูเสีย', 0),
+(10, 1, 102, 3, '2020-11-17', '2020-11-20', 'ทำความสะอาดห้องน้ำ', 0),
+(11, 2, 102, 3, '2020-11-17', '2020-11-21', 'ลูกบิดประตูชำรุด', 0);
 
 -- --------------------------------------------------------
 
@@ -298,7 +307,7 @@ ALTER TABLE `petition`
 -- AUTO_INCREMENT for table `petition_transaction`
 --
 ALTER TABLE `petition_transaction`
-  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `room`

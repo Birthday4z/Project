@@ -214,9 +214,41 @@
                     cal_final_total(count);
                 });
 
+                $('#create_invoice').click(function() {
 
-                $('#create')
+                    if ($.trim($('#invoice_receiver_name').val()).length == 0) {
+                        alert("กรุณาเลือกผู้รับบิล");
+                        return false;
+                    }
 
+                    if ($.trim($('#invoice_date').val()).length == 0) {
+                        alert("กรุณาเลือกวันที่");
+                        return false;
+                    }
+
+                    for (var i=1; i<=count; i++) {
+                        if ($.trim($('#item_name'+i).val()).length == 0) {
+                            alert("กรุณาใส่ชื่อรายการ");
+                            $('#item_name'+i).focus();
+                            return false;
+                        }
+
+                        if ($.trim($('#item_price_unit'+i).val()).length == 0) {
+                            alert("กรุณาใส่ราคาต่อหน่วย");
+                            $('#item_price_unit'+i).focus();
+                            return false;
+                        }
+
+                        if ($.trim($('#item_unit_used'+i).val()).length == 0) {
+                            alert("กรุณาใส่จำนวนหน่วยที่ใช้");
+                            $('#item_unit_used'+i).focus();
+                            return false;
+                        }
+                    }
+
+                    $('#invoice_form').submit();
+
+                });
 
             });
         </script>

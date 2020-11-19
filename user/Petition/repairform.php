@@ -7,18 +7,24 @@
         header("location: ../../index.php");
     } else {
         if (isset($_POST['submit_repairform'])) {
+
             $want_date = $_POST['want_date'];
+            if ($want_date < $current_date) {
+                echo "<script>sweet_error('ไม่สามารถเลือกวันที่ต้องการได้ !','กรุณาเลือกวันที่ต้องการ หลังจากวันที่ปัจจุบัน');</script>";
+            } else {
 
-            $sqlresult = $DBCon->submit_repairform($_SESSION['Room_ID'], $_SESSION['Member_ID'], $current_date, $_POST['want_date'], $_POST['Description']);
-            if ($sqlresult) {
-                echo '<script type="text/javascript">swal("บันทึกข้อมูลสำเร็จ !", "ระบบกำลังพาคุณไปหน้าพิมพ์แบบฟอร์ม", "success");</script>';
-                $_SESSION['TypePetition'] = "ฟอร์มคำร้องซ่อมแซมอุปกรณ์ในห้องพัก";
-                $_SESSION['Currentdate'] = $current_date;
-                $_SESSION['Wantdate'] = $_POST['want_date'];
-                $_SESSION['Description'] = $_POST['Description'];
+                $want_date = $_POST['want_date'];
+
+                $sqlresult = $DBCon->submit_repairform($_SESSION['Room_ID'], $_SESSION['Member_ID'], $current_date, $_POST['want_date'], $_POST['Description']);
+                if ($sqlresult) {
+                    echo '<script type="text/javascript">swal("บันทึกข้อมูลสำเร็จ !", "ระบบกำลังพาคุณไปหน้าพิมพ์แบบฟอร์ม", "success");</script>';
+                    $_SESSION['TypePetition'] = "ฟอร์มคำร้องซ่อมแซมอุปกรณ์ในห้องพัก";
+                    $_SESSION['Currentdate'] = $current_date;
+                    $_SESSION['Wantdate'] = $_POST['want_date'];
+                    $_SESSION['Description'] = $_POST['Description'];
                 
-                echo "<script>window.open('printpdf.php','_blank');</script>";
-
+                    echo "<script>window.open('printpdf.php','_blank');</script>";
+                }
             }
         }
 

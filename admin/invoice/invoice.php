@@ -72,17 +72,29 @@
                                         <th>จำนวนหน่วยเดือนก่อน</th>
                                         <th>จำนวนหน่วยเดือนนี้</th>
                                         <th>จำนวนหน่วยที่ใช้</th>
-                                        <th colspan="6">Amount (Baht)</th>
+                                        <th>Amount (Baht)</th>
+                                        <th>ลบ</th>
                                     </tr>
                                     
-                                    <tr>
+                                    <tr id="row_id_1">
                                         <td><span id="item_no">1</span></td>
-                                        <td><input type="text" name="item_name[]" id="item_name1" class="form-control input-sm"></td>
+                                        <td><input type="text" name="item_name[]" id="item_name1" class="form-control input-sm" value="ไฟฟ้า (Electric)"></td>
                                         <td><input type="text" name="item_price_unit[]" id="item_price_unit1" data-itemno="1" class="form-control input-sm number_only item_price_unit"></td>
-                                        <td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth1" data-itemno="1" class="form-control input-sm number_only item_unit_lastmonth" readonly></td>
+                                        <td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth1" data-itemno="1" class="form-control input-sm number_only item_unit_lastmonth"></td>
                                         <td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth1" data-itemno="1" class="form-control input-sm number_only item_unit_thismonth"></td>
-                                        <td><input type="text" name="item_unit_used[]" id="item_unit_used1" data-itemno="1" class="form-control input-sm number_only item_unit_used" readonly></td>
+                                        <td><input type="text" name="item_unit_used[]" id="item_unit_used1" data-itemno="1" class="form-control input-sm number_only item_unit_used"></td>
                                         <td><input type="text" name="item_amount[]" id="item_amount1" data-itemno="1" class="form-control input-sm number_only item_amount" readonly></td>
+                                        <td><button type="button" name="remove_row" id="1" class="btn btn-danger btn-xs remove_row">X</button></td>
+                                    </tr>
+                                    <tr id="row_id_2">
+                                        <td><span id="item_no">2</span></td>
+                                        <td><input type="text" name="item_name[]" id="item_name2" class="form-control input-sm" value="ประปา (Water)"></td>
+                                        <td><input type="text" name="item_price_unit[]" id="item_price_unit2" data-itemno="2" class="form-control input-sm number_only item_price_unit"></td>
+                                        <td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth2" data-itemno="2" class="form-control input-sm number_only item_unit_lastmonth"></td>
+                                        <td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth2" data-itemno="2" class="form-control input-sm number_only item_unit_thismonth"></td>
+                                        <td><input type="text" name="item_unit_used[]" id="item_unit_used2" data-itemno="2" class="form-control input-sm number_only item_unit_used"></td>
+                                        <td><input type="text" name="item_amount[]" id="item_amount2" data-itemno="2" class="form-control input-sm number_only item_amount" readonly></td>
+                                        <td><button type="button" name="remove_row" id="2" class="btn btn-danger btn-xs remove_row">X</button></td>
                                     </tr>
                                 </table>
 
@@ -95,7 +107,8 @@
 
                         <tr>
                             <td align="right"><b>Total</b></td>
-                            <td align="right"><b><span id="final_total_amount"></span></b></td>
+                            <td align="right"><b><span id="final_total_amount"></span>
+                            <span>฿</span></b></td>
                         </tr>
                         <tr>
                             <td colspan="2"></td>
@@ -115,7 +128,7 @@
         <script>
             $(document).ready(function() {
                 var final_total_amount = $('#final_total_amount').text();
-                var count = 1;
+                var count = 2;
                 $(document).on('click', '#add_row', function(){
                     count = count + 1;
                     $('#total_item').val(count);
@@ -128,11 +141,11 @@
 
                     html_code += '<td><input type="text" name="item_price_unit[]" id="item_price_unit'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_price_unit"></td>';
                     html_code += '<td><input type="text" name="item_unit_lastmonth[]" id="item_unit_lastmonth'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_lastmonth" readonly></td>';
-                    html_code += '<td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_thismonth"></td>';
-                    html_code += '<td><input type="text" name="item_unit_used[]" id="item_unit_used'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_used" readonly></td>';
+                    html_code += '<td><input type="text" name="item_unit_thismonth[]" id="item_unit_thismonth'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_thismonth" readonly></td>';
+                    html_code += '<td><input type="text" name="item_unit_used[]" id="item_unit_used'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_unit_used"></td>';
                     html_code += '<td><input type="text" name="item_amount[]" id="item_amount'+count+'" data-itemno="'+count+'" class="form-control input-sm number_only item_amount" readonly></td>';
 
-                    html_code += '<td><button type="button" name="remove_row" id="'+count+'"class="btn btn-danger btn-xs remove_row">X</button></td></tr>';
+                    html_code += '<td><button type="button" name="remove_row" id="'+count+'" class="btn btn-danger btn-xs remove_row">X</button></td></tr>';
                     
                     $('#invoice-item-table').append(html_code);
 
@@ -149,6 +162,60 @@
                     $('#total_item').val(count);
                 });
 
+                function cal_final_total(count) {
+                    var final_total_item = 0;
+                    for (j=1; j<=count; j++) {
+
+                        var price_unit = 0;
+                        var unit_lastmonth = 0;
+                        var unit_thismonth = 0;
+                        var unit_used = 0;
+                        var item_amount = 0;
+                        var zero = 0;
+
+                        unit_thismonth = $('#item_unit_thismonth'+j).val();
+                        if (unit_thismonth > 0 || unit_thismonth < 0) {
+                            unit_lastmonth = $('#item_unit_lastmonth'+j).val();
+                            unit_used = parseFloat(unit_thismonth) - parseFloat(unit_lastmonth);
+                            if (unit_used == 0) {
+                                $('#item_amount'+j).val(zero);
+                            }
+                            $('#item_unit_used'+j).val(unit_used);
+                            final_total_item = parseFloat(final_total_item) + parseFloat(item_amount);
+                        }
+
+                        unit_used = $('#item_unit_used'+j).val();
+                        if (unit_used > 0 || unit_used < 0) {
+                            price_unit = $('#item_price_unit'+j).val();
+                            if (price_unit > 0) {
+                                item_amount = parseFloat(unit_used) * parseFloat(price_unit);
+                                $('#item_amount'+j).val(item_amount);
+                            }
+                            final_total_item = parseFloat(final_total_item) + parseFloat(item_amount);
+                        }
+
+                    }
+                    $('#final_total_amount').text(final_total_item);
+                }
+
+                
+                $(document).on('blur', '.item_price_unit', function() {
+                    cal_final_total(count);
+                });
+
+                $(document).on('blur', '.item_unit_used', function() {
+                    cal_final_total(count);
+                });
+
+                $(document).on('blur', '.item_unit_thismonth', function() {
+                    cal_final_total(count);
+                });
+                $(document).on('blur', '.item_unit_lastmonth', function() {
+                    cal_final_total(count);
+                });
+
+
+                $('#create')
 
 
             });

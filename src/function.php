@@ -25,6 +25,12 @@
             return $getroomquery;
         }
 
+        public function getpetitionlist() {
+            $getpetitionlist = mysqli_query($this->DBCon, "SELECT `Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished` FROM `petition_transaction` ORDER BY Petition_Transaction_ID DESC");
+            return $getpetitionlist;
+        }
+
+
         public function getinvoicelist() {
             $getinvoicelist = mysqli_query($this->DBCon, "SELECT `Invoice_ID`, `Invoice_Note`, `Invoice_Date`, `Invoice_Room`, `Invoice_Receiver_Name`, `Invoice_Total`, `Invoice_Date_Create` FROM `invoice` ORDER BY Invoice_ID DESC");
             return $getinvoicelist;

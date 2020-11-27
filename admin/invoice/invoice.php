@@ -282,8 +282,8 @@
                             <tr>
                                 <td>'.$row["Invoice_Note"].'</td>
                                 <td>'.$row["Invoice_Date"].'</td>
-                                <td>'.$row["Invoice_Room"].'</td>
-                                <td>'.$row["Invoice_Receiver_Name"].'</td>
+                                <td>'.$row["Room_ID"].'</td>
+                                <td>'.$row["F_Name"].'</td>
                                 <td>'.$row["Invoice_Total"].'</td>
                                 <td>
                                     <a href="print_invoice.php?pdf=1&id='.$row["Invoice_ID"].'">PDF</a>

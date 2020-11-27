@@ -32,7 +32,7 @@
 
 
         public function getinvoicelist() {
-            $getinvoicelist = mysqli_query($this->DBCon, "SELECT `Invoice_ID`, `Invoice_Note`, `Invoice_Date`, `Invoice_Room`, `Invoice_Receiver_Name`, `Invoice_Total`, `Invoice_Date_Create` FROM `invoice` ORDER BY Invoice_ID DESC");
+            $getinvoicelist = mysqli_query($this->DBCon, "SELECT `Invoice_ID`, `Invoice_Note`, `Invoice_Date`, `Room_ID`, `F_Name`, `Invoice_Total`, `Invoice_Date_Create` FROM `invoice`, `member` WHERE invoice.Member_ID = member.Member_ID ORDER BY Invoice_ID DESC");
             return $getinvoicelist;
         }
 

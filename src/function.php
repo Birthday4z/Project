@@ -26,7 +26,7 @@
         }
 
         public function getpetitionlist() {
-            $getpetitionlist = mysqli_query($this->DBCon, "SELECT `Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished` FROM `petition_transaction` ORDER BY Petition_Transaction_ID DESC");
+            $getpetitionlist = mysqli_query($this->DBCon, "SELECT `Petition_Transaction_ID`, `Petition_ID`, `Room_ID`, `F_Name`, `Date_Create`, `Date_Admit`, `Description`, `isFinished` FROM `petition_transaction`, `member` WHERE member.Member_ID = petition_transaction.Member_ID ORDER BY Petition_Transaction_ID DESC");
             return $getpetitionlist;
         }
 
@@ -37,13 +37,13 @@
         }
 
 
-        public function submit_cleanform($q1, $q2, $q3, $q4, $q5) {
-            $cleanformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (1,$q1,$q2,'$q3','$q4','$q5',0)");
+        public function submit_cleanform($RoomID, $MemberID, $Date_Create, $Date_Admit, $Description) {
+            $cleanformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (1,$RoomID,$MemberID,'$Date_Create','$Date_Admit','$Description',0)");
             return $cleanformquery;
         }
 
-        public function submit_repairform($w1, $w2, $w3, $w4, $w5) {
-            $repairformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (2,$w1,$w2,'$w3','$w4','$w5',0)");
+        public function submit_repairform($RoomID, $MemberID, $Date_Create, $Date_Admit, $Description) {
+            $repairformquery = mysqli_query($this->DBCon, "INSERT INTO `petition_transaction`(`Petition_ID`, `Room_ID`, `Member_ID`, `Date_Create`, `Date_Admit`, `Description`, `isFinished`) VALUES (2,$RoomID,$MemberID,'$Date_Create','$Date_Admit','$Description',0)");
             return $repairformquery;
         }
 

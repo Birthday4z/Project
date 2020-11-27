@@ -26,6 +26,7 @@
 </head>
 
 <body>
+<?php include_once "../admin_header.php" ?>
     <div class="container-fluid">
     <h3 align="center">Petition List</h3> <br />
 
@@ -35,7 +36,7 @@
                     <th>Petition_Transaction_ID</th>
                     <th>Petition_ID</th>
                     <th>Room_ID</th>
-                    <th>Member_ID</th>
+                    <th>ชื่อเจ้าของห้อง</th>
                     <th>Date_Create</th>
                     <th>Date_Admit</th>
                     <th>Description</th>
@@ -50,7 +51,7 @@
                                 <td>'.$row["Petition_Transaction_ID"].'</td>
                                 <td>'.$row["Petition_ID"].'</td>
                                 <td>'.$row["Room_ID"].'</td>
-                                <td>'.$row["Member_ID"].'</td>
+                                <td>'.$row["F_Name"].'</td>
                                 <td>'.$row["Date_Create"].'</td>
                                 <td>'.$row["Date_Admit"].'</td>
                                 <td>'.$row["Description"].'</td>

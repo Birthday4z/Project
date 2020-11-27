@@ -24,7 +24,7 @@
                 echo "<script>window.location.href='user/user.php'</script>";
             }
         } else {
-            echo "<script>sweet_error_autoclose('เกิดข้อผิดพลาด', 'Username หรือ Password ไม่ถูกต้อง', 2000)</script>";
+            echo "<script>sweet_error_autoclose('เกิดข้อผิดพลาด', 'Username หรือ Password ไม่ถูกต้อง', 3000)</script>";
         }
     }
 
@@ -47,7 +47,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <h1 class="mt-5">Login Page</h1>
 

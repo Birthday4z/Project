@@ -11,6 +11,9 @@
         if ($num > 0) {
             $_SESSION['Room_ID'] = $num['Room_ID'];
         }
+        else if (!$_SESSION['Room_ID'] = $num['Room_ID']) {
+            header("location: ../index.php");
+        }
 
         $User_Member_ID = $_SESSION['Member_ID'];
         $User_Room_ID = $_SESSION['Room_ID'];
@@ -21,10 +24,12 @@
         $User_isAdmin = $_SESSION['isAdmin'];
 
 
-        echo "<script>sweet_success('เข้าสู่ระบบสำเร็จ !', 'ยินดีต้อนรับ คุณ "
+        echo "<script>sweet_success('ยินดีต้อนรับ !', 'ยินดีต้อนรับ คุณ "
         . $_SESSION['Firstname']
-        . "')</script>"; ?>
-
+        . "')</script>";
+            $_SESSION['Logged'] = 1;
+        ?>
+        
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +41,7 @@
     <link rel="stylesheet" href="/project/src/css/bootstrap.min.css">
     <script src="/project/src/js/jquery-3.3.1.min.js"></script>
     <script src="/project/src/js/bootstrap.min.js"></script>
-
 </head>
-
 <body>
     <?php include_once "user_header.php" ?>
     <div class="container">
@@ -46,19 +49,8 @@
         <h1 class="mt-5">ห้องพัก : <?php echo $_SESSION['Room_ID']; ?></h1>
         <hr>
     </div>
-
-
-
-
 </body>
-
 </html>
-
-
-
-
-
-
 <?php
     }
 ?>

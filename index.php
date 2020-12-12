@@ -35,7 +35,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - Management System</title>
     <link rel="stylesheet" href="/project/src/css/bootstrap.min.css">
     <link rel="stylesheet" href="/project/src/css/styles.css">
     <script src="/project/src/js/jquery-3.3.1.min.js"></script>
@@ -50,7 +50,7 @@
   <div class="container">
     <div class="left">
       <div class="login">LOGIN</div>
-      <div class="eula">ยินดีต้อนรับเข้าสู่ระบบจัดการหอพัก Dormitory Management System</div>
+      <div class="eula">ยินดีต้อนรับเข้าสู่ระบบจัดการห้องพัก Apartment Management System</div>
     </div>
     <div class="right">
       <svg viewBox="0 0 320 300">

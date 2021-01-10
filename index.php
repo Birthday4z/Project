@@ -78,7 +78,7 @@
       <div class="form">
         <form method="POST">
         <label for="email">บัญชีผู้ใช้ (Username)</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" autocomplete="off" required>
         <label for="password">รหัสผ่าน (Password)</label>
         <input type="password" id="password" name="password" required>
         <input type="submit" id="submit" name="submit" value="Submit">

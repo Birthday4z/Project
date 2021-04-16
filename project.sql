@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 10:38 AM
+-- Generation Time: Apr 16, 2021 at 11:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -43,21 +43,12 @@ CREATE TABLE `announcement` (
 CREATE TABLE `invoice` (
   `Invoice_ID` int(11) NOT NULL,
   `Invoice_Note` varchar(250) NOT NULL,
-  `Invoice_Date` date DEFAULT NULL,
-  `Invoice_Room` int(11) DEFAULT NULL,
-  `Invoice_Receiver_Name` varchar(250) NOT NULL,
+  `Invoice_Date` varchar(10) DEFAULT NULL,
+  `Room_ID` int(11) DEFAULT NULL,
+  `Member_ID` int(11) DEFAULT NULL,
   `Invoice_Total` int(11) NOT NULL,
-  `Invoice_Date_Create` datetime NOT NULL
+  `Invoice_Date_Create` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `invoice`
---
-
-INSERT INTO `invoice` (`Invoice_ID`, `Invoice_Note`, `Invoice_Date`, `Invoice_Room`, `Invoice_Receiver_Name`, `Invoice_Total`, `Invoice_Date_Create`) VALUES
-(1, '', '2020-12-01', 101, 'ทดสอบ', 0, '0000-00-00 00:00:00'),
-(2, '', '2020-11-11', 102, '', 0, '0000-00-00 00:00:00'),
-(3, 'test', '2020-11-11', 101, 'ทดสอบ', 1000, '2020-11-04 03:19:03');
 
 -- --------------------------------------------------------
 
@@ -69,9 +60,11 @@ CREATE TABLE `invoice_item` (
   `Invoice_Item_ID` int(11) NOT NULL,
   `Invoice_ID` int(11) NOT NULL,
   `Item_Name` varchar(250) NOT NULL,
-  `Item_Quantity` int(11) NOT NULL,
-  `Item_Price` decimal(10,2) NOT NULL,
-  `Item_Net` decimal(10,2) NOT NULL
+  `Item_Unit_Price` int(11) DEFAULT NULL,
+  `Item_Unit_LastMonth` int(11) DEFAULT NULL,
+  `Item_Unit_ThisMonth` int(11) DEFAULT NULL,
+  `Item_Unit_Used` int(11) DEFAULT NULL,
+  `Item_Amount` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -145,9 +138,9 @@ INSERT INTO `member_active` (`Room_ID`, `Member_ID`, `Lease_ID`) VALUES
 (101, 2, 1),
 (102, 3, 2),
 (103, 4, 2),
-(104, 5, 3),
-(105, 0, 0),
-(106, 0, 0),
+(104, 0, 0),
+(105, 5, 3),
+(106, 5, 0),
 (107, 0, 0),
 (201, 0, 0),
 (202, 0, 0),
@@ -205,7 +198,24 @@ INSERT INTO `petition_transaction` (`Petition_Transaction_ID`, `Petition_ID`, `R
 (9, 2, 102, 3, '2020-11-15', '2020-11-21', 'ลูกบิดประตูเสีย', 0),
 (10, 1, 102, 3, '2020-11-17', '2020-11-20', 'ทำความสะอาดห้องน้ำ', 0),
 (11, 2, 102, 3, '2020-11-17', '2020-11-21', 'ลูกบิดประตูชำรุด', 0),
-(12, 1, 103, 4, '2020-11-17', '2020-11-19', 'มีขี้หมาอยู่บนเตียง', 0);
+(12, 1, 103, 4, '2020-11-17', '2020-11-19', 'มีขี้หมาอยู่บนเตียง', 0),
+(13, 2, 102, 3, '2020-11-19', '2020-11-21', 'ทดสอบ', 0),
+(14, 1, 102, 3, '2020-11-19', '2020-11-21', 'ทดสอบ\r\n', 0),
+(15, 1, 102, 3, '2020-11-19', '2020-11-21', 'ทดสอบ\r\n', 0),
+(16, 1, 102, 3, '2020-11-23', '2020-11-25', '', 0),
+(17, 2, 102, 3, '2020-11-23', '2020-11-25', 'ทดสอบ', 0),
+(18, 1, 102, 3, '2020-11-24', '2020-11-24', '', 0),
+(19, 1, 102, 3, '2020-11-24', '2020-11-24', '', 0),
+(20, 1, 102, 3, '2020-11-24', '2020-11-25', '', 0),
+(21, 1, 102, 3, '2020-11-24', '2020-11-30', 'ทดสอบ', 0),
+(22, 2, 102, 3, '2020-11-24', '2020-11-29', 'ลูกบิดประตูชำรุด', 0),
+(23, 1, 102, 3, '2020-11-25', '2020-11-27', 'ทดสอบ', 0),
+(24, 1, 102, 3, '2020-11-27', '2020-11-29', 'sss', 0),
+(25, 2, 102, 3, '2020-11-27', '2020-11-29', 'sss', 0),
+(26, 2, 102, 3, '2020-11-27', '2020-11-28', 'sss', 0),
+(27, 1, 102, 3, '2020-11-27', '2020-11-28', 'ssss', 0),
+(28, 2, 102, 3, '2020-12-07', '2020-12-16', 'sss', 0),
+(29, 1, 102, 3, '2020-12-08', '2020-12-17', 'ทดสอบ From Ngrok\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -267,7 +277,8 @@ ALTER TABLE `lease`
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
-  ADD PRIMARY KEY (`Member_ID`);
+  ADD PRIMARY KEY (`Member_ID`),
+  ADD UNIQUE KEY `Username` (`Username`);
 
 --
 -- Indexes for table `member_active`
@@ -307,7 +318,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `Invoice_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Invoice_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoice_item`
@@ -325,7 +336,7 @@ ALTER TABLE `lease`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `Member_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Member_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `petition`
@@ -337,7 +348,7 @@ ALTER TABLE `petition`
 -- AUTO_INCREMENT for table `petition_transaction`
 --
 ALTER TABLE `petition_transaction`
-  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Petition_Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `room`
